@@ -76,7 +76,7 @@ namespace TeamPicks
             {
                 var player = new Player { Name = playerData.Name };
 
-                foreach (var championName in playerData.Mains)
+                foreach (var championName in playerData.MainPicks)
                 {
                     var existingChampion = existingChampions.TrySingleOrDefault(c => c.Name == championName);
                     if (existingChampion != null)
@@ -85,7 +85,7 @@ namespace TeamPicks
                     }
                 }
 
-                foreach (var championName in playerData.Goods)
+                foreach (var championName in playerData.AlternativePicks)
                 {
                     var existingChampion = existingChampions.TrySingleOrDefault(c => c.Name == championName);
                     if (existingChampion != null)
@@ -94,7 +94,7 @@ namespace TeamPicks
                     }
                 }
 
-                foreach (var championName in playerData.Reserves)
+                foreach (var championName in playerData.OtherPicks)
                 {
                     var existingChampion = existingChampions.TrySingleOrDefault(c => c.Name == championName);
                     if (existingChampion != null)

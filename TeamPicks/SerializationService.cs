@@ -16,15 +16,15 @@ namespace TeamPicks
 
                 foreach (var champion in player.ChampionsMain)
                 {
-                    playerData.Mains.Add(champion.Name);
+                    playerData.MainPicks.Add(champion.Name);
                 }
                 foreach (var champion in player.ChampionsGood)
                 {
-                    playerData.Goods.Add(champion.Name);
+                    playerData.AlternativePicks.Add(champion.Name);
                 }
                 foreach (var champion in player.ChampionsReserve)
                 {
-                    playerData.Reserves.Add(champion.Name);
+                    playerData.OtherPicks.Add(champion.Name);
                 }
 
                 playerList.Add(playerData);
