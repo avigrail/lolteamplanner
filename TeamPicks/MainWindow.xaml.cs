@@ -32,17 +32,10 @@ namespace TeamPicks
 
         private void OnToggleExpandedState()
         {
-            var players = this.MainViewModel.Players.Cast<Player>().ToList();
+            var players = MainViewModel.Players.Cast<Player>().ToList();
 
-            if (players.All(player => !player.IsExpanded))
-            {
-                players.ForEach(_ => _.IsExpanded = true);
-            }
-
-            else
-            {
-                players.ForEach(_ => _.IsExpanded = false);
-            }
+            bool newExpandedState = !players.Any(p => p.IsExpanded);
+            players.ForEach(player => player.IsExpanded = newExpandedState);
         }
 
         private void LoadFile()

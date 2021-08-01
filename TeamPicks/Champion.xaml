@@ -9,7 +9,6 @@
                 Padding="0">
             <Button.InputBindings>
                 <MouseBinding MouseAction="MiddleClick" Command="{Binding Path=ToggleIsEnabled}"/>
-
             </Button.InputBindings>
             <b:Interaction.Behaviors>
                 <local:Drag/>

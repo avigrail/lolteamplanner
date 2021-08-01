@@ -11,8 +11,8 @@
                     <StackPanel>                        
                         <ToggleButton x:Name="ToggleButton"
                                       Padding="10"
-                                      BorderThickness="1"
-                                      IsChecked="{TemplateBinding IsExpanded}"
+                                      BorderThickness="0"
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource AncestorType={x:Type Expander}}}"
                                       Content="{TemplateBinding Header}" 
                                       ContentTemplate="{TemplateBinding HeaderTemplate}">                      
                         </ToggleButton>
@@ -30,7 +30,7 @@
         </DataTemplate.Resources>
         <Expander Header="{Binding}"
                   MinWidth="300"
-                  IsExpanded="{Binding Path=IsExpanded}"
+                  IsExpanded="{Binding Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5">
             <Expander.HeaderTemplate>
                 <DataTemplate>
