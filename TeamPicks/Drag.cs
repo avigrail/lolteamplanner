@@ -1,12 +1,31 @@
 ﻿using Microsoft.Xaml.Behaviors;
+using System;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace TeamPicks
 {
-    public class Drag : Behavior<Button>
+    public class Drag : Behavior<ContentPresenter>
     {
+        public bool RemoveOnDrop
+        {
+            get => (bool)GetValue(RemoveOnDropProperty);
+            set => SetValue(RemoveOnDropProperty, value);
+        }
+
+        public static readonly DependencyProperty RemoveOnDropProperty = DependencyProperty.Register(nameof(RemoveOnDrop), typeof(bool), typeof(Drag), new PropertyMetadata(default(bool)));
+
+        public IList BoundItems
+        {
+            get => (IList)GetValue(BoundItemsProperty);
+            set => SetValue(BoundItemsProperty, value);
+        }
+
+        public static readonly DependencyProperty BoundItemsProperty = DependencyProperty.Register(
+          nameof(BoundItems), typeof(IList), typeof(Drag), new PropertyMetadata(default(IList)));
+
         private bool isMouseClicked = false;
 
         protected override void OnAttached()
@@ -33,9 +52,11 @@ namespace TeamPicks
             if (isMouseClicked)
             {
                 DataObject data = new DataObject();
-                data.SetData("data", this.AssociatedObject.DataContext);
+                data.SetData("data", AssociatedObject.DataContext);
+                data.SetData("removeOnDrop", RemoveOnDrop);
+                data.SetData("removeAction", new Action<object>(_ => BoundItems?.Remove(_)));                
 
-                DragDrop.DoDragDrop(this.AssociatedObject, data, DragDropEffects.Move);
+                DragDrop.DoDragDrop(AssociatedObject, data, DragDropEffects.Move);
             }
 
             isMouseClicked = false;

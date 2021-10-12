@@ -40,52 +40,64 @@
                 </ItemsControl>
             </ScrollViewer>
 
-            <Grid Grid.Column="1" Visibility="{Binding Path=ShowChampionPool, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid Grid.Column="1" 
+                  Visibility="{Binding Path=ShowChampionPool, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="400" MinWidth="300" MaxWidth="800"/>
+                    <ColumnDefinition Width="400"
+                                      MinWidth="300"
+                                      MaxWidth="800"/>
                 </Grid.ColumnDefinitions>
                 
-                <GridSplitter Width="10" Background="Transparent"/>
+                <GridSplitter Width="10" 
+                              Background="Transparent"/>
 
                 <ScrollViewer Grid.Column="1"
-                          VerticalScrollBarVisibility="Hidden" 
-                          HorizontalScrollBarVisibility="Disabled"
-                          Visibility="{Binding Path=ShowChampionPool, Converter={StaticResource BoolToVisibilityConverter}}">
+                              VerticalScrollBarVisibility="Hidden" 
+                              HorizontalScrollBarVisibility="Disabled"
+                              Visibility="{Binding Path=ShowChampionPool, Converter={StaticResource BoolToVisibilityConverter}}">
                     <ItemsControl x:Name="ChampionPool" ItemsSource="{Binding Path=Champions}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ContentPresenter Content="{Binding}">
+                                    <b:Interaction.Behaviors>
+                                        <local:Drag/>
+                                    </b:Interaction.Behaviors>
+                                </ContentPresenter>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
                 
                 <TextBox Grid.Column="1"
-                     Visibility="Collapsed"
-                     HorizontalAlignment="Stretch" 
-                     TextAlignment="Center"
-                     VerticalContentAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     Background="{DynamicResource AccentDarkSemiTransparent}"
-                     Foreground="{DynamicResource AccentLight}"
-                     CaretBrush="{DynamicResource White}"
-                     FontWeight="Bold"
-                     IsHitTestVisible="True"
-                     TextWrapping="Wrap"
-                     BorderThickness="0"
-                     FontSize="40"
-                     Margin="0 0 0 0"
-                     Height="250"
-                     Padding="10 10">
+                         Visibility="Collapsed"
+                         HorizontalAlignment="Stretch" 
+                         TextAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         VerticalAlignment="Bottom"
+                         Background="{DynamicResource AccentDarkSemiTransparent}"
+                         Foreground="{DynamicResource AccentLight}"
+                         CaretBrush="{DynamicResource White}"
+                         FontWeight="Bold"
+                         IsHitTestVisible="True"
+                         TextWrapping="Wrap"
+                         BorderThickness="0"
+                         FontSize="40"
+                         Margin="0 0 0 0"
+                         Height="250"
+                         Padding="10 10">
                     <b:Interaction.Behaviors>
                         <local:FilterBehavior Items="{Binding ElementName=ChampionPool}" 
-                                          IsEnabled="{Binding Path=ShowChampionPool}"
-                                          KeyEventSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}"/>
+                                              IsEnabled="{Binding Path=ShowChampionPool}"
+                                              KeyEventSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}"/>
                     </b:Interaction.Behaviors>
                 </TextBox>
             </Grid>
-
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

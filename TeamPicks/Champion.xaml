@@ -8,13 +8,14 @@
                 Margin="0" 
                 Padding="0">
             <Button.InputBindings>
-                <MouseBinding MouseAction="MiddleClick" Command="{Binding Path=ToggleIsEnabled}"/>
-            </Button.InputBindings>
-            <b:Interaction.Behaviors>
-                <local:Drag/>
-            </b:Interaction.Behaviors>
+                <MouseBinding MouseAction="RightClick" Command="{Binding Path=ToggleIsEnabled}"/>
+                <MouseBinding Gesture="Control+RightClick"  Command="{Binding Path=OpenStatsInBrowser}"/>
+            </Button.InputBindings>            
             <Grid>
-                <Image Source="{Binding Path=ImageUrl}" Height="100" Width="100" Stretch="UniformToFill"/>
+                <Image Source="{Binding Path=ImageUrl}" 
+                       Height="100" 
+                       Width="100" 
+                       Stretch="UniformToFill"/>
                 <Border>
                     <Border.Style>
                         <Style TargetType="{x:Type Border}">

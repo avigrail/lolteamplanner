@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TeamPicks
 {
@@ -7,9 +9,10 @@ namespace TeamPicks
 
         public ICrawlerService Crawler { get; }
 
-        public IList Champions { get; set; }
+        public IList Champions => champions;
+        private List<Champion> champions;
 
-        public IList Players { get; set; }
+        public IList Players { get; } = new List<Player>();
 
         public bool ShowChampionPool
         {
@@ -42,8 +45,21 @@ namespace TeamPicks
 
         public void Initialize()
         {
-            Champions = Crawler.GetData();
+            champions = Crawler.GetData();
             showChampionPool = true;
+        }
+
+        internal void ResetChamptionStates()
+        {
+            champions.ForEach(c => c.SetOpacity(1.0));
+        }
+
+        internal void ClearPlayerPicks()
+        {
+            foreach (Player player in Players)
+            {
+                player.ClearChampions.Execute(null);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace TeamPicks
     public class Player : ViewModelBase
     {
         public bool IsExpanded
-        { 
+        {
             get => isExpanded;
             set
             {
@@ -14,6 +14,7 @@ namespace TeamPicks
                 OnPropertyChanged();
             }
         }
+
         private bool isExpanded = true;
 
         public ICommand ClearChampions => new RelayCommand(_ =>
@@ -22,6 +23,7 @@ namespace TeamPicks
             ChampionsGood?.Clear();
             ChampionsReserve?.Clear();
         });
+
         public ObservableCollection<Champion> ChampionsMain { get; set; } = new ObservableCollection<Champion>();
         public ObservableCollection<Champion> ChampionsGood { get; set; } = new ObservableCollection<Champion>();
         public ObservableCollection<Champion> ChampionsReserve { get; set; } = new ObservableCollection<Champion>();

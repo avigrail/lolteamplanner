@@ -113,7 +113,6 @@ namespace TeamPicks
 
             AssociatedObject.Loaded -= OnLoaded;
             AssociatedObject.LostFocus -= OnLostFocus;
-            AssociatedObject.LostFocus -= OnLostFocus;
         }
     }
 }

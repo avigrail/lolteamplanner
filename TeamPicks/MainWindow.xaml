@@ -57,16 +57,29 @@
                 <TextBlock Text="➖"/>
                 </Button>
             <Button Command="{Binding Path=ToggleViewCommand}"
+                    ToolTip="Switch View"
                     DockPanel.Dock="Left">
                 <TextBlock Text="❖" FontSize="20"/>
                 </Button>
-            <Button Command="{Binding Path=ToggleChampionPoolCommand}"                    
+            <Button Command="{Binding Path=ToggleChampionPoolCommand}" 
+                    ToolTip="Hide/Show Pool"                   
                     DockPanel.Dock="Left">
                 <TextBlock Text="◨" FontSize="20"/>
             </Button>
-            <Button Command="{Binding Path=ToggleExpandedState}"                    
-                        DockPanel.Dock="Left">
+            <Button Command="{Binding Path=ToggleExpandedState}"
+                    ToolTip="Expand/Collapse All"                  
+                    DockPanel.Dock="Left">
                 <TextBlock Text="⦂" FontSize="20"/>
+            </Button>
+            <Button Command="{Binding Path=ResetStates}"
+                    ToolTip="Reset Bans"                  
+                    DockPanel.Dock="Left">
+                <TextBlock Text="🟆" FontSize="20"/>
+            </Button>
+            <Button Command="{Binding Path=ClearPlayers}"
+                    ToolTip="Clear All Picks"                  
+                    DockPanel.Dock="Left">
+                <TextBlock Text="➦" FontSize="20"/>
             </Button>
         </DockPanel>
         <Border DockPanel.Dock="Bottom" Background="{DynamicResource BackgroundDark}">

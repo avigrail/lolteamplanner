@@ -18,6 +18,8 @@ namespace TeamPicks
         public ICommand ToggleViewCommand => new RelayCommand(o => MainViewModel.UseTileView = !MainViewModel.UseTileView);
         public ICommand ToggleChampionPoolCommand => new RelayCommand(o => MainViewModel.ShowChampionPool = !MainViewModel.ShowChampionPool);
         public ICommand ToggleExpandedState => new RelayCommand(o => OnToggleExpandedState());
+        public ICommand ResetStates => new RelayCommand(o => MainViewModel?.ResetChamptionStates());
+        public ICommand ClearPlayers => new RelayCommand(o => MainViewModel?.ClearPlayerPicks());
 
         public MainWindow()
         {
@@ -40,8 +42,6 @@ namespace TeamPicks
 
         private void LoadFile()
         {
-            MainViewModel.Players = new List<Player>();
-
             List<PlayerData> playerDataFromFile;
             try
             {
@@ -51,7 +51,7 @@ namespace TeamPicks
 
             catch (Exception)
             {
-                MainViewModel.Players = new List<Player>
+                 var defaultPlayers = new []
                 {
                     new Player{Name = "Top"},
                     new Player{Name = "Mid"},
@@ -59,6 +59,8 @@ namespace TeamPicks
                     new Player{Name = "Adc"},
                     new Player{Name = "Support"},
                 };
+
+                MainViewModel.Players.Add(defaultPlayers);
 
                 return;
             }
