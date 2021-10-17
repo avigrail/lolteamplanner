@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamTierList.UI"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        WindowStyle="None"
-        Height="450" 
-        Width="800">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
     </WindowChrome.WindowChrome>
@@ -22,11 +20,11 @@
         <SolidColorBrush x:Key="AccentDarkSemiTransparent" Color="#440133" Opacity="0.6"/>
         <SolidColorBrush x:Key="ForegroundLight" Color="Gray"/>
         <SolidColorBrush x:Key="ForegroundDark" Color="DimGray"/>
-        <local:WindowStateToMarginConverter x:Key="WindowStateToMarginConverter"/>        
+        <local:WindowStateToMarginConverter x:Key="WindowStateToMarginConverter"/>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource AccentLight}"/>
         </Style>
-    </Window.Resources>   
+    </Window.Resources>
     <DockPanel LastChildFill="true" Margin="{Binding WindowState, Converter={StaticResource WindowStateToMarginConverter}}">
         <DockPanel x:Name="TitleBar" 
                DockPanel.Dock="Top" 
@@ -34,32 +32,32 @@
                LastChildFill="False"
                Background="{DynamicResource BackgroundDark}">
             <DockPanel.Resources>
-                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                        <Setter Property="Width" Value="50"/>
-                        <Setter Property="DockPanel.Dock" Value="Right"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-                    </Style>
-                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="HorizontalAlignment" Value="Center"/>                    
-                    </Style>
-                    <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-                </DockPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="DockPanel.Dock" Value="Right"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+                <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            </DockPanel.Resources>
             <Button Command="{Binding Path=CloseCommand}">
                 <TextBlock Text="✖"/>
-                </Button>
+            </Button>
             <Button Command="{Binding Path=MaximizeCommand}">
                 <TextBlock Text="⬛"/>
-                </Button>
+            </Button>
             <Button Command="{Binding Path=MinimizeCommand}">
                 <TextBlock Text="➖"/>
-                </Button>
+            </Button>
             <Button Command="{Binding Path=ToggleViewCommand}"
                     ToolTip="Switch View"
                     DockPanel.Dock="Left">
                 <TextBlock Text="❖" FontSize="20"/>
-                </Button>
+            </Button>
             <Button Command="{Binding Path=ToggleChampionPoolCommand}" 
                     ToolTip="Hide/Show Pool"                   
                     DockPanel.Dock="Left">
@@ -84,5 +82,5 @@
         <Border DockPanel.Dock="Bottom" Background="{DynamicResource BackgroundDark}">
             <ContentPresenter Content="{Binding Path=MainViewModel}"/>
         </Border>
-    </DockPanel>    
+    </DockPanel>
 </Window>
