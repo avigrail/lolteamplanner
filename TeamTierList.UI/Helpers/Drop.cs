@@ -39,7 +39,7 @@ namespace TeamTierList.UI
             {
                 if (e.MiddleButton == System.Windows.Input.MouseButtonState.Pressed)
                 {
-                    BoundItems.Remove(((Border)e.OriginalSource).DataContext);
+                    BoundItems.Remove(((Image)e.OriginalSource).DataContext);
                 }
             };
         }

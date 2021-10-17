@@ -31,7 +31,7 @@
             <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         </DataTemplate.Resources>
         <Expander Header="{Binding}"
-                  MinWidth="300"
+                  MinWidth="315"
                   IsExpanded="{Binding Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Margin="5">
             <Expander.HeaderTemplate>
@@ -60,10 +60,10 @@
                     </Grid>
                 </DataTemplate>
             </Expander.HeaderTemplate>
+            
             <DockPanel LastChildFill="False" Margin="0 2 0 0">
                 <DockPanel.Resources>
                     <Style TargetType="{x:Type ItemsControl}">
-                        <Setter Property="DockPanel.Dock" Value="Top"/>
                         <Setter Property="MinHeight" Value="100"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="Background" Value="{DynamicResource BackgroundLight}"/>
@@ -87,26 +87,53 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="Width" Value="15"/>
+                        <Setter Property="Margin" Value="0 2"/>
+                        <Setter Property="DockPanel.Dock" Value="Left"/>
+                        <Setter Property="CornerRadius" Value="5 0 0 5"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                        <Setter Property="Foreground" Value="{DynamicResource BackgroundDark}"/>
+                        <Setter Property="TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                    </Style>
                 </DockPanel.Resources>
 
-                <ItemsControl ItemsSource="{Binding Path=TierS}" >
-                    <b:Interaction.Behaviors>
-                        <local:Drop BoundItems="{Binding Path=TierS}"/>
-                    </b:Interaction.Behaviors>
-                </ItemsControl>
+                <DockPanel DockPanel.Dock ="Top">
+                    <Border Background="{DynamicResource STierBackground}">
+                        <TextBlock Text="S"/>
+                    </Border>
+                    <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding Path=TierS}">
+                        <b:Interaction.Behaviors>
+                            <local:Drop BoundItems="{Binding Path=TierS}"/>
+                        </b:Interaction.Behaviors>
+                    </ItemsControl>
+                </DockPanel>
 
-                <ItemsControl ItemsSource="{Binding Path=TierA}">
-                    <b:Interaction.Behaviors>
-                        <local:Drop BoundItems="{Binding Path=TierA}"/>
-                    </b:Interaction.Behaviors>
-                </ItemsControl>
+                <DockPanel DockPanel.Dock ="Top">
+                    <Border Background="{DynamicResource ATierBackground}">
+                        <TextBlock Text="A"/>
+                    </Border>
+                    <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding Path=TierA}">
+                        <b:Interaction.Behaviors>
+                            <local:Drop BoundItems="{Binding Path=TierA}"/>
+                        </b:Interaction.Behaviors>
+                    </ItemsControl>
+                </DockPanel>
 
-                <ItemsControl ItemsSource="{Binding Path=TierB}">
-                    <b:Interaction.Behaviors>
-                        <local:Drop BoundItems="{Binding Path=TierB}"/>
-                    </b:Interaction.Behaviors>
-                </ItemsControl>
-
+                <DockPanel DockPanel.Dock ="Top">
+                    <Border Background="{DynamicResource BTierBackground}">
+                        <TextBlock Text="B"/>
+                    </Border>
+                    <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding Path=TierB}">
+                        <b:Interaction.Behaviors>
+                            <local:Drop BoundItems="{Binding Path=TierB}"/>
+                        </b:Interaction.Behaviors>
+                    </ItemsControl>
+                </DockPanel>
             </DockPanel>
         </Expander>
     </DataTemplate>

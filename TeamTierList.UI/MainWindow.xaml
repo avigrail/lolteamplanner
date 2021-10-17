@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TeamTierList.UI"
         mc:Ignorable="d"
         WindowState="Maximized"
+        Title="Team Tier List"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
     <WindowChrome.WindowChrome>
