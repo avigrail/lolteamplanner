@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="BackgroundLight" Color="#222222"/>
     <SolidColorBrush x:Key="BackgroundDark" Color="#111111"/>
-    <SolidColorBrush x:Key="AccentLight" Color="#CF0F9F"/>
-    <SolidColorBrush x:Key="AccentDark" Color="#440133"/>
-    <SolidColorBrush x:Key="AccentDarkSemiTransparent" Color="#440133" Opacity="0.6"/>
+    <SolidColorBrush x:Key="AccentLight" Color="#99aacc"/>
+    <SolidColorBrush x:Key="AccentDark" Color="#222222"/>
+    <SolidColorBrush x:Key="AccentDarkSemiTransparent" Color="#222222" Opacity="0.6"/>
     <SolidColorBrush x:Key="ForegroundLight" Color="Gray"/>
     <SolidColorBrush x:Key="ForegroundDark" Color="DimGray"/>
     <SolidColorBrush x:Key="STierBackground" Color="#ff6261" Opacity="1.0"/>
